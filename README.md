@@ -33,7 +33,7 @@ En esta sección debemos configurar el ambiente DDEV. Para ello primeramente deb
 
 2 - Después tendremos que ejecutar el comando <code>ddev config</code>, donde nos pedirá una serie de entradas de teclado para completar la configuración.
  
-    A - En "Proyect Name: " podemos colocar cualquier nombre, pero es recomendable que esté relacionado a este tema para no enredarnos. Por ejemplo: cuatroenlinea.
+    A - En "Proyect Name: "  colocamos cualquier nombre, pero es recomendable que esté relacionado a este tema.
 
     B - En "Docroot Location: " simplemente lo dejamos sin completar, es decir, presionamos la tecla Enter.
 
@@ -47,3 +47,22 @@ Una vez finalizados estos pasos correctamente, podemos pasar a la cuarta y últi
 
 ## Correr el programa del 4 en línea.
 
+Una vez completados todos los pasos anteriormente explicados, toca ejecutar el comando <code>ddev start<code>.
+
+En caso de obtener el error de la siguiente imagen al introducir este último comando, una solución posible es (por experiencia propia) la indicada debajo de la captura. 
+
+![image](file:///C:/Users/Lautaro/Videos/Captures/Windows%20PowerShell%2018_6_2022%203_57_47%20p.%20m..png)
+
+Este error en particular indica que el puerto 443, que es el puerto correspondiente al HTTPS, ya está en uso. Es por esto, que hay que buscar el proceso que está haciendo uso de este puerto y "matarlo" a través de una serie de comandos especificados a continuación en el orden correspondiente.
+
+<code>netstat -ano | findstr :443<code>
+
+Luego de este comando nos fijamos el número que se encuentra a la derecha del todo en la primera línea (en este caso 10328) y ejecutamos el siguiente comando:
+
+<code>taskkill /PID 10328 /F<code>
+
+Una vez hecho esto, probamos nuevamente el comando ddev start para continuar con la guía.
+
+Luego de ejecutar <code>ddev start<code> deberíamos poder ver un link https, el cual debemos copiar y pegar en la barra de búsqueda de nuestro navegador. De esta forma si hicimos todo correctamente podemos ver el sitio web de Laravel. Luego de esto agregamos /jugar/1 a la dirección anteriormente mencionada y presionamos Enter para poder visualizar el mismísimo 4 línea.
+
+Con esto damos por terminada la guía, no se olvide de ejecutar ddev stop al momento cerrar todo, esta es la forma correcta y natural de hacerlo.
