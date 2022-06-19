@@ -51,8 +51,6 @@ Una vez completados todos los pasos anteriormente explicados, toca ejecutar el c
 
 En caso de obtener el error de la siguiente imagen al introducir este último comando, una solución posible es (por experiencia propia) la indicada debajo de la captura. 
 
-![image](file:///C:/Users/Lautaro/Videos/Captures/Windows%20PowerShell%2018_6_2022%203_57_47%20p.%20m..png)
-
 Este error en particular indica que el puerto 443, que es el puerto correspondiente al HTTPS, ya está en uso. Es por esto, que hay que buscar el proceso que está haciendo uso de este puerto y "matarlo" a través de una serie de comandos especificados a continuación en el orden correspondiente.
 
 <code>netstat -ano | findstr :443<code>
