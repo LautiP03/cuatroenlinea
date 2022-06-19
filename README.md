@@ -31,7 +31,7 @@ En esta sección debemos configurar el ambiente DDEV. Para ello primeramente deb
 
 1 - A partir del punto anterior, ejecutaremos la linea <code>cd cuatroenlinea</code> para movernos dentro de la carpeta que contiene todos los archivos de este repositorio.
 
-2 - Después tendremos que ejecutar el comando <code>ddev config</code>., donde nos pedirá una serie de entradas de teclado para completar la configuración.
+2 - Después tendremos que ejecutar el comando <code>ddev config</code>, donde nos pedirá una serie de entradas de teclado para completar la configuración.
  
     A - En "Proyect Name: "  colocamos cualquier nombre, pero es recomendable que esté relacionado a este tema.
 
@@ -49,18 +49,18 @@ Una vez finalizados estos pasos correctamente, podemos pasar a la cuarta y últi
 
 Una vez completados todos los pasos anteriormente explicados, toca ejecutar el comando <code>ddev start</code>.
 
-En caso de obtener el error de la siguiente imagen al introducir este último comando, una solución posible es (por experiencia propia) la indicada debajo de la captura.
+En caso de obtener un error similar a **Unable to listen on required ports, port 433 is already in use**, una solución posible es (por experiencia propia) la indicada a continuación.
 
 Este error en particular indica que el puerto 443, que es el puerto correspondiente al HTTPS, ya está en uso. Es por esto, que hay que buscar el proceso que está haciendo uso de este puerto y "matarlo" a través de una serie de comandos especificados a continuación en el orden correspondiente.
 
 <code>netstat -ano | findstr :443</code>.
 
-Luego de este comando nos fijamos el número que se encuentra a la derecha del todo en la primera línea (en este caso 10328) y ejecutamos el siguiente comando:
+Luego de este comando nos fijamos y recordamos el número que se encuentra a la derecha del todo en la primera línea de respuesta (en este caso 10328) y ejecutamos el siguiente comando:
 
 <code>taskkill /PID 10328 /F</code>.
 
-Una vez hecho esto, probamos nuevamente el comando ddev start para continuar con la guía.
+Una vez hecho esto, probamos nuevamente el comando <code>ddev start</code> para continuar con la guía.
 
-Luego de ejecutar <code>ddev start</code>. deberíamos poder ver un link https, el cual debemos copiar y pegar en la barra de búsqueda de nuestro navegador. De esta forma si hicimos todo correctamente podemos ver el sitio web de Laravel. Luego de esto agregamos /jugar/1 a la dirección anteriormente mencionada y presionamos Enter para poder visualizar el mismísimo 4 línea.
+Luego de ejecutar <code>ddev start</code> deberíamos poder ver un mensaje en color verde similar a "Proyect can be reached at" seguido de un link https. Este link debemos copiarlo y pegarlo en la barra de búsqueda de nuestro navegador. De esta forma si hicimos todo correctamente tenemos que poder ver el sitio web de Laravel. Luego de esto agregamos /jugar/1 a la dirección anteriormente mencionada y presionamos Enter para poder visualizar el mismísimo 4 línea.
 
-Con esto damos por terminada la guía, no se olvide de ejecutar ddev stop al momento cerrar todo, esta es la forma correcta y natural de hacerlo.
+Con esto damos por terminada la guía, no se olvide de ejecutar <code>ddev stop</code> al momento cerrar todo, esta es la forma correcta y natural de hacerlo.
