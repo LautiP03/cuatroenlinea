@@ -65,21 +65,6 @@ class Tablero implements InterfazTablero {
 
     }
 
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
 }
 
 
