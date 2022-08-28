@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace app;
 
 interface InterfazTablero {
 
@@ -17,7 +17,7 @@ class Tablero implements InterfazTablero {
     protected int $altura;
     protected int $ancho; 
 
-    public function __construct($altura = 6, $ancho = 7){
+    public function __construct(int $altura = 6,int $ancho = 7){
 
         $this->ejY = $altura;
         $this->ejX = $ancho;
@@ -26,15 +26,13 @@ class Tablero implements InterfazTablero {
     }
 
     //Reinicia el tablero recorriendo las filas de cada columna del tablero.
-    public function  reinicioTablero(){
-
+    public function reinicioTablero(){
         for($a = 0; $a < $this->ejX; $a++){
-            for ($b = 0; $b < this->ejY; $b++){
+            for($b = 0; $b < $this->ejY; $b++){
                 $this->tablero[$a][$b] = "0";
             }
         }
-
-    }
+    } 
 
     //Devuelve TRUE en caso de que la casilla esté libre, en otro caso FALSE.
     public function disposicionCasilla(int $a, int $b){
@@ -66,6 +64,5 @@ class Tablero implements InterfazTablero {
     }
 
 }
-
 
 ?>
