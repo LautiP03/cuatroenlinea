@@ -1,13 +1,15 @@
 <?php
 
-namespace app;
+namespace App;
+include 'Ficha.php';
 
 interface InterfazTablero {
 
     public function reinicioTablero();
     public function disposicionCasilla(int $a, int $b);
-    public function colocarFicha(int $a, int $b, Ficha $ficha);
+    public function colocarFicha(int $a, Ficha $ficha);
     public function quitarFicha(int $a, int $b);
+    public function mostrarTablero();
 
 }
 
@@ -29,7 +31,7 @@ class Tablero implements InterfazTablero {
     public function reinicioTablero(){
         for($a = 0; $a < $this->ejX; $a++){
             for($b = 0; $b < $this->ejY; $b++){
-                $this->tablero[$a][$b] = "0";
+                $this->tablero[$a][$b] = new Ficha("0");;
             }
         }
     } 
@@ -37,23 +39,22 @@ class Tablero implements InterfazTablero {
     //Devuelve TRUE en caso de que la casilla esté libre, en otro caso FALSE.
     public function disposicionCasilla(int $a, int $b){
 
-        if($this->tablero[$a][$b] == "0"){
-            
-            return TRUE;
-
-        }else{
-
-            return FALSE;
-
-        }
+        return $this->tablero[$a][$b] == "0";
 
     }
     
-    //Coloca el valor de una ficha donde se indique.
-    public function colocarFicha(int $a, int $b, Ficha $ficha){
+    public function colocarFicha(int $a, Ficha $ficha){
 
-        $this->tablero[$a][$b] = $ficha;
-    
+        $a--; //Esto es para que la primer columna no este asignada al número 0, sino que esté asignada al valor 1.
+
+        for($b = ($this->ejY) - 1; $b >= 0 ; $b--){
+
+            if (!($this->disposicionCasilla($a, $b))){
+
+                $this->tablero[$a][$b] = $ficha;
+                break;
+            }
+        }
     }
 
     //Dada una casilla del tablero, saca la ficha que se encuentre allí.
@@ -62,7 +63,45 @@ class Tablero implements InterfazTablero {
         $this->tablero[$a][$b] = "0";
 
     }
+    
+    //Muestra el tablero de juego actual.
+    public function mostrarTablero(){
 
+        echo "TABLERO DE JUEGO";
+        print("\n");
+        echo "----------------";
+        print("\n\n");
+
+        for($b = 0; $b < $this->ejY; $b++){
+
+            for($a = 0;$a < $this->ejX; $a++){
+
+                echo $this->tablero[$a][$b]->retornarColor();
+
+            }
+
+            print("\n");
+        }
+
+    }
 }
+
+$tablero = new Tablero;
+$rojo = new Ficha("rojo");
+$azul = new Ficha("azul");
+
+$tablero->colocarFicha(1,$rojo);
+$tablero->colocarFicha(1,$azul);
+$tablero->colocarFicha(1,$rojo);
+$tablero->colocarFicha(4,$rojo);
+$tablero->colocarFicha(7,$rojo);
+/*
+$tablero->colocarFicha(1,$azul);
+$tablero->colocarFicha(1,$rojo);
+$tablero->colocarFicha(1,$azul);
+$tablero->colocarFicha(1,$rojo);
+*/
+$tablero->mostrarTablero();
+
 
 ?>
