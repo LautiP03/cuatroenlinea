@@ -8,7 +8,6 @@ interface InterfazTablero {
     public function reinicioTablero();
     public function disposicionCasilla(int $a, int $b);
     public function colocarFicha(int $a, Ficha $ficha);
-    public function quitarFicha(int $a, int $b);
     public function mostrarTablero();
 
 }
@@ -39,7 +38,7 @@ class Tablero implements InterfazTablero {
     //Devuelve TRUE en caso de que la casilla esté libre, en otro caso FALSE.
     public function disposicionCasilla(int $a, int $b){
 
-        return $this->tablero[$a][$b] == "0";
+        return $this->tablero[$a][$b]->retornarColor() == "0";
 
     }
     
@@ -49,7 +48,7 @@ class Tablero implements InterfazTablero {
 
         for($b = ($this->ejY) - 1; $b >= 0 ; $b--){
 
-            if (!($this->disposicionCasilla($a, $b))){
+            if (($this->disposicionCasilla($a, $b))){
 
                 $this->tablero[$a][$b] = $ficha;
                 break;
@@ -57,13 +56,6 @@ class Tablero implements InterfazTablero {
         }
     }
 
-    //Dada una casilla del tablero, saca la ficha que se encuentre allí.
-    public function quitarFicha(int $a, int $b){
-
-        $this->tablero[$a][$b] = "0";
-
-    }
-    
     //Muestra el tablero de juego actual.
     public function mostrarTablero(){
 
@@ -95,12 +87,9 @@ $tablero->colocarFicha(1,$azul);
 $tablero->colocarFicha(1,$rojo);
 $tablero->colocarFicha(4,$rojo);
 $tablero->colocarFicha(7,$rojo);
-/*
 $tablero->colocarFicha(1,$azul);
-$tablero->colocarFicha(1,$rojo);
 $tablero->colocarFicha(1,$azul);
-$tablero->colocarFicha(1,$rojo);
-*/
+
 $tablero->mostrarTablero();
 
 
