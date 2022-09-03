@@ -8,6 +8,7 @@ interface InterfazTablero {
     public function reinicioTablero();
     public function disposicionCasilla(int $a, int $b);
     public function colocarFicha(int $a, Ficha $ficha);
+    public function devolverColorFicha(int $a, int $b);
     public function mostrarTablero();
 
 }
@@ -54,6 +55,13 @@ class Tablero implements InterfazTablero {
                 break;
             }
         }
+    }
+
+    //Funcion usada para el test de la clase Tablero.
+    public function devolverColorFicha(int $a, int $b){
+
+        return $this->tablero[$a][$b]->retornarColor();
+
     }
 
     //Muestra el tablero de juego actual.
