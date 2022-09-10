@@ -10,7 +10,7 @@ interface InterfazFicha{
 
 class Ficha implements InterfazFicha {
 
-    protected string $entrada;
+    protected String $entrada;
 
     public function __construct($entrada){
 
@@ -22,7 +22,6 @@ class Ficha implements InterfazFicha {
         return $this->color;
 
     }
-
 }
 
 ?>
