@@ -86,6 +86,7 @@ class Tablero implements InterfazTablero {
     }
 }
 
+/*
 $tablero = new Tablero;
 $rojo = new Ficha("rojo");
 $azul = new Ficha("azul");
@@ -99,6 +100,6 @@ $tablero->colocarFicha(1,$azul);
 $tablero->colocarFicha(1,$azul);
 
 $tablero->mostrarTablero();
-
+*/
 
 ?>
