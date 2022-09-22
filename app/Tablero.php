@@ -45,6 +45,12 @@ class Tablero implements InterfazTablero {
     
     public function colocarFicha(int $a, Ficha $ficha){
 
+        if ($a > $this->ejX || $a < 1){
+
+            throw new ExcepcionColumnaInvalida("No puede colocarse una ficha fuera de las columnas del tablero");
+
+        }
+
         $a--; //Esto es para que la primer columna no este asignada al número 0, sino que esté asignada al valor 1.
 
         for($b = ($this->ejY) - 1; $b >= 0 ; $b--){
