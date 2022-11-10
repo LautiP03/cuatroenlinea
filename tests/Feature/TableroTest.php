@@ -10,20 +10,20 @@ class TestTablero extends TestCase{
 
 public function test_colocar_fichas(){
 
-    $tablero = new Tablero;
+    $tablero = new Tablero();
     $rojo = new Ficha("rojo");
     $azul = new Ficha("azul");
     
     $tablero->colocarFicha(1,$rojo);
     $tablero->colocarFicha(1,$azul);
 
-    $this->assertEquals($tablero->devolverColorFicha(1,2), "0"); //dice que es "0" ?).
+    $this->assertEquals($tablero->devolverColorFicha(1,2), "azul"); //dice que es "0" ?).
 
 }
 
 public function test_disposicion_casilla(){
 
-    $tablero = new Tablero;
+    $tablero = new Tablero();
     $rojo = new Ficha ("rojo");
 
     $tablero->colocarFicha(2, $rojo);
@@ -34,7 +34,7 @@ public function test_disposicion_casilla(){
 
 public function test_reiniciar_tablero(){
 
-    $tablero = new Tablero;
+    $tablero = new Tablero();
     $rojo = new Ficha ("rojo");
     $azul = new Ficha("azul");
 
@@ -46,9 +46,6 @@ public function test_reiniciar_tablero(){
 
 }
 
-
 }
-
-
 
 ?>

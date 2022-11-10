@@ -3,6 +3,7 @@
 namespace App;
 include 'Tablero.php';
 
+
 interface InterfazJuego{
 
     public function lineaVertical(Tablero $tablero);
@@ -83,7 +84,7 @@ class Resultado implements InterfazJuego {
                 if(($tablero->devolverColorFicha($a,$b)) == "azul"){
 
                     $contazul++;
-                    $controjo = 0;
+                    $controjo = 0; //si encuentra una ficha azul se reinicia el contador del color rojo
 
                     if ($contazul == 4){
 
@@ -93,7 +94,7 @@ class Resultado implements InterfazJuego {
                 } else if(($tablero->devolverColorFicha($a,$b)) == "rojo"){
 
                     $controjo++;
-                    $contazul = 0;
+                    $contazul = 0; //si encuentra una ficha roja se reinicia el contador del color azul
 
                     if ($controjo == 4){
 
@@ -137,6 +138,5 @@ $tablero->colocarFicha(4,$rojo);
 
 
 $juego->resultado($tablero);
-
 
 ?>
